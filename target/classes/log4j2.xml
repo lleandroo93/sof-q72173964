@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+        </Console>
+        
+        <SMTP name="Mail" subject="Desktop - ERROR" 
+              to="to@gmail.com" 
+              from="from@gmail.com"
+              smtpUsername="from@gmail.com" smtpPassword="passwd"
+              smtpHost="smtp.gmail.com" smtpPort="465" bufferSize="50"
+              smtpProtocol="smtps" smtpDebug="true">
+        </SMTP>
+        
+        <Async name="Async">
+            <AppenderRef ref="Mail"/>
+        </Async>
+    </Appenders>
+    
+    <Loggers>    
+        <Root level="info">
+            <AppenderRef ref="Async"/>
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
